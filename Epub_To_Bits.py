@@ -16,11 +16,12 @@ def extract_metadata(epub_file, output_folder):
     author = book.get_metadata("DC", "creator")[0][0] if book.get_metadata("DC", "creator") else "Unknown Author"
     cover_path = None
     
-    for item in book.items:
-        if item.get_type() == epub.ITEM_COVER:
-            cover_path = os.path.join(output_folder, "cover.jpg")
-            with open(cover_path, "wb") as img_file:
-                img_file.write(item.get_content())
+    # Extract cover image properly
+    cover_item = book.get_item_with_id('cover')
+    if cover_item:
+        cover_path = os.path.join(output_folder, "cover.jpg")
+        with open(cover_path, "wb") as img_file:
+            img_file.write(cover_item.get_content())
     
     return {"title": title, "author": author, "cover_image": cover_path}
 
