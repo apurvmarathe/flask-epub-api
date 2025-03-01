@@ -1,0 +1,6 @@
+flask
+ebooklib
+beautifulsoup4
+requests
+lxml
+gunicorn
