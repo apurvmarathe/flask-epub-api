@@ -94,10 +94,10 @@ def upload_epub():
         for img_file in image_files:
             zipf.write(img_file, os.path.basename(img_file))
      
-    if os.path.exists(zip_path):
-    print("✅ ZIP file successfully created:", zip_path)
-    else:
-    print("❌ ZIP file was not created. Check file paths.")
+     if os.path.exists(zip_path):
+      print("✅ ZIP file successfully created:", zip_path)
+     else:
+      print("❌ ZIP file was not created. Check file paths.")
     
     return send_file(zip_path, as_attachment=True, download_name="processed_epub.zip")
 
